@@ -30,8 +30,6 @@ class Personne {
         return ($result);
     }
 
-
-
      public function updatePerson( $id, $img, $nom, $mail, $phone) {
          try {
              $pdo = DataBase::connect();
