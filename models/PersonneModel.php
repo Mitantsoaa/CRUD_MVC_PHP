@@ -56,8 +56,16 @@ class PersonneModel {
          }
     }
 
-    public function newPerson(){
-        
+    public function newPerson($img,$nom,$mail,$phone){
+        try {
+            $pdo = DataBase::connect();
+            $sql = $pdo->prepare("INSERT INTO personnel (img, nom, mail, phone) VALUES (?,?,?,?)");
+			$sql->execute([$img,$nom,$mail,$phone]);
+            DataBase::disconnect();;
+            } catch (Exception $e) {
+            DataBase::disconnect();
+            throw $e;
+        }
     }
 
     public function paginator ($limit)
