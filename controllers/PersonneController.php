@@ -24,7 +24,7 @@ class PersonneController{
             } elseif ( $op == 'edit'&& $id != NULL) {
                 $this->editPerson($id);
             }elseif ( $op == 'delete' && $id != NULL) {
-                $this->deleteperon($id);
+                $this->deletePerson($id);
             }else {
                 $this->showError("Page not found", "Page for operation ".$op." was not found!");
             }
@@ -57,7 +57,7 @@ class PersonneController{
 
         if ( isset($_POST['save']) ) {
 
-            $img      = isset($_POST['photo'])?   $_POST['photo'] :NULL;
+            $img      = isset($_FILES['photo'])?   $_FILES['photo']['name'] :NULL;
             $nom    = isset($_POST['nom'])? $_POST['nom']:NULL;
             $mail    = isset($_POST['mail'])? $_POST['mail']:NULL;
             $phone    = isset($_POST['phone'])? $_POST['phone']:NULL;
