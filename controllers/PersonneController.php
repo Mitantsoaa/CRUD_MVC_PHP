@@ -20,6 +20,7 @@ class PersonneController{
             if ( !$op || $op == 'list' ) {
                 $this->listPerson();
             } elseif ( $op == 'new') {
+                die('ok');
                 $this->savePerson();
             } elseif ( $op == 'edit'&& $id != NULL) {
                 $this->editPerson($id);
