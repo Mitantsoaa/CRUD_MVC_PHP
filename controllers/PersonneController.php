@@ -20,7 +20,6 @@ class PersonneController{
             if ( !$op || $op == 'list' ) {
                 $this->listPerson();
             } elseif ( $op == 'new') {
-                die('ok');
                 $this->savePerson();
             } elseif ( $op == 'edit'&& $id != NULL) {
                 $this->editPerson($id);
@@ -55,15 +54,15 @@ class PersonneController{
         $nom = '';
         $mail = '';
         $phone = '';
-
+        
         if ( isset($_POST['save']) ) {
-
             $img      = isset($_FILES['photo'])?   $_FILES['photo']['name'] :NULL;
             $nom    = isset($_POST['nom'])? $_POST['nom']:NULL;
             $mail    = isset($_POST['mail'])? $_POST['mail']:NULL;
             $phone    = isset($_POST['phone'])? $_POST['phone']:NULL;
-
+            
             try {
+                
                 $this->personne->newPerson($img, $nom, $mail, $phone);
                 $this->redirect('index.php');
                 return;
