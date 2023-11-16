@@ -59,8 +59,9 @@ class PersonneModel {
     public function newPerson($img,$nom,$mail,$phone){
         try {
             $pdo = DataBase::connect();
-            $sql = $pdo->prepare("INSERT INTO personnel (img, nom, mail, phone) VALUES (?,?,?,?)");
-			$sql->execute([$img,$nom,$mail,$phone]);
+            $sql = $pdo->prepare("INSERT INTO personnel (img_url, nom, email, phone) VALUES (".$img.",".$nom.",".$mail.",".$phone.")");
+			$sql->execute();
+            // var_dump('okok');die;
             DataBase::disconnect();;
             } catch (Exception $e) {
             DataBase::disconnect();
