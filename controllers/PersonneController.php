@@ -70,4 +70,27 @@ class PersonneController{
         }
         include 'views/insert.php';
     }
+
+    public function editPerson($id) {
+        $item = $this->personne->getPersonById($id);
+        $img = $item['img_url'];
+        $nom = $item['nom'];
+        $mail = $item['email'];
+        $phone = $item['phone'];
+
+        if ( isset($_POST['save']) ) {
+            $photo      = isset($_FILES['photo']) ?   $_FILES['photo'] : NULL;
+            $name    = isset($_POST['nom']) ? $_POST['nom'] : NULL;
+            $email    = isset($_POST['mail']) ? $_POST['mail'] : NULL;
+            $tel    = isset($_POST['phone']) ? $_POST['phone'] : NULL;
+
+            try {
+                $this->personne->updatePerson($id, $photo, $name, $email, $tel);
+                $this->redirect('index.php');
+                return;
+            } catch (Exception $exception) { echo 'Error: '. $exception->getMessage(); }
+        }
+        include 'Views/update.php';
+
+    }
 }
