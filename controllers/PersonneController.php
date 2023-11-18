@@ -85,6 +85,7 @@ class PersonneController{
             $tel    = isset($_POST['phone']) ? $_POST['phone'] : NULL;
 
             try {
+
                 $this->personne->updatePerson($id, $photo, $name, $email, $tel);
                 $this->redirect('index.php');
                 return;
