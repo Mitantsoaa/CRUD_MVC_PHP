@@ -79,7 +79,7 @@ class PersonneController{
         $phone = $item['phone'];
 
         if ( isset($_POST['save']) ) {
-            $photo      = isset($_FILES['photo']) ?   $_FILES['photo'] : NULL;
+            $photo      = isset($_FILES['photo']['name']) ?   $_FILES['photo']['name'] : NULL;
             $name    = isset($_POST['nom']) ? $_POST['nom'] : NULL;
             $email    = isset($_POST['mail']) ? $_POST['mail'] : NULL;
             $tel    = isset($_POST['phone']) ? $_POST['phone'] : NULL;
@@ -93,5 +93,14 @@ class PersonneController{
         }
         include 'Views/update.php';
 
+    }
+
+    public function deletePerson($id){
+        try {
+            $this->personne->deletePerson($id);
+        } catch (Exception $exception) {
+            echo 'Error: ' . $exception->getMessage();
+        }
+        $this->redirect('index.php');
     }
 }
