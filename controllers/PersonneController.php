@@ -94,4 +94,13 @@ class PersonneController{
         include 'Views/update.php';
 
     }
+
+    public function deletePerson($id){
+        try {
+            $this->personne->deletePerson($id);
+        } catch (Exception $exception) {
+            echo 'Error: ' . $exception->getMessage();
+        }
+        $this->redirect('index.php');
+    }
 }
