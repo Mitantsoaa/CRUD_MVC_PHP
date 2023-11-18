@@ -2,7 +2,7 @@
 ?>
 <div class="row">
     <div class="col-md-6 col-offset-3">
-        <form action="post" method="" class="form">
+        <form action="" method="POST" class="form" enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="file" class="form-control item" id="photo" name="photo" value="<?php echo $img?>">
                 </div>
