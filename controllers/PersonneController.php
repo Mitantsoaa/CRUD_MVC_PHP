@@ -5,7 +5,8 @@ require_once 'models/PersonneModel.php';
 class PersonneController{
     protected $personne = NULL;
 
-    public function __construct() {
+    public function __construct() 
+    {
         $this->personne = new PersonneModel();
     }
 
@@ -13,7 +14,8 @@ class PersonneController{
         header('Location: '.$location);
     }
 
-    public function handleRequest() {
+    public function handleRequest()
+    {
         $op = isset($_GET['op']) ? $_GET['op'] : NULL;
         $id = isset($_GET['id']) ? $_GET['id'] : NULL;
         try {
@@ -34,7 +36,8 @@ class PersonneController{
         }
     }
 
-    public function listPerson() {
+    public function listPerson() 
+    {
         $paginate = 5;
         $orderby = isset($_GET['orderby']) ? $_GET['orderby'] : "nom ";
         if (isset($_GET["page"])) {
@@ -49,7 +52,8 @@ class PersonneController{
         include "views/list.php";
     }
 
-    public function savePerson(){
+    public function savePerson()
+    {
         $img = '';
         $nom = '';
         $mail = '';
@@ -64,17 +68,18 @@ class PersonneController{
             try {
                 $this->personne->newPerson($img, $nom, $mail, $phone);
                 $file = $_FILES['photo']['tmp_name'];
-                die($file);
                 $destination = '../assets/images';
                 move_uploaded_file($file, realpath(dirname(__FILE__)).$destination.'/'.$img['name']);
                 $this->redirect('index.php');
+                
                 return;
             } catch (Exception $exception) { echo 'Error: '. $exception->getMessage(); }
         }
         include 'views/insert.php';
     }
 
-    public function editPerson($id) {
+    public function editPerson($id) 
+    {
         $item = $this->personne->getPersonById($id);
         $img = $item['img_url'];
         $nom = $item['nom'];
@@ -91,6 +96,7 @@ class PersonneController{
 
                 $this->personne->updatePerson($id, $photo, $name, $email, $tel);
                 $this->redirect('index.php');
+
                 return;
             } catch (Exception $exception) { echo 'Error: '. $exception->getMessage(); }
         }
@@ -98,7 +104,8 @@ class PersonneController{
 
     }
 
-    public function deletePerson($id){
+    public function deletePerson($id)
+    {
         try {
             $this->personne->deletePerson($id);
         } catch (Exception $exception) {
