@@ -28,6 +28,7 @@ class DataBase extends PDO
         die($e->getMessage());
         }
     }
+    
     return self::$con;
     }
 

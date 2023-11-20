@@ -14,10 +14,12 @@ class PersonneModel {
         } catch (PDOException  $e ){
             echo "Error: ".$e;
         }
+
         return $result;
     }
 
-    public function getPersonById($id) {
+    public function getPersonById($id) 
+    {
         try{
             $pdo = DataBase::connect();
             $sql = $pdo->prepare("SELECT * FROM personnel WHERE id = $id");
@@ -27,10 +29,12 @@ class PersonneModel {
         }catch(PDOException  $e ){
             echo "Error: ".$e;
         }
+
         return ($result);
     }
 
-     public function updatePerson( $id, $img, $nom, $mail, $phone) {
+     public function updatePerson( $id, $img, $nom, $mail, $phone) 
+     {
          try {
              $pdo = DataBase::connect();
              $sql = $pdo->prepare(
@@ -44,7 +48,8 @@ class PersonneModel {
          }
     }
 
-    public function deletePerson( $id) {
+    public function deletePerson( $id) 
+    {
          try {
              $pdo = DataBase::connect();
              $sql = $pdo->prepare("DELETE FROM personnel WHERE id = $id");
@@ -56,7 +61,8 @@ class PersonneModel {
          }
     }
 
-    public function newPerson($img,$nom,$mail,$phone){
+    public function newPerson($img,$nom,$mail,$phone)
+    {
         try {
             $pdo = DataBase::connect();
             $sql = $pdo->prepare("INSERT INTO personnel (img_url, nom, email, phone) VALUES ('".$img."','".$nom."','".$mail."','".$phone."')");
@@ -79,6 +85,7 @@ class PersonneModel {
 
             DataBase::disconnect();
             $total_pages = ceil($result / $limit);
+            
             return $total_pages;
         } catch (PDOException  $e ){
             echo "Error: ".$e;
