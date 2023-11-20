@@ -54,16 +54,19 @@ class PersonneController{
         $nom = '';
         $mail = '';
         $phone = '';
-        
+
         if ( isset($_POST['save']) ) {
-            $img      = isset($_FILES['photo'])?   $_FILES['photo']['name'] :NULL;
+            $img      = isset($_FILES['photo']['name'])?   $_FILES['photo']['name'] :NULL;
             $nom    = isset($_POST['nom'])? $_POST['nom']:NULL;
             $mail    = isset($_POST['mail'])? $_POST['mail']:NULL;
             $phone    = isset($_POST['phone'])? $_POST['phone']:NULL;
-            
+
             try {
-                
                 $this->personne->newPerson($img, $nom, $mail, $phone);
+                $file = $_FILES['photo']['tmp_name'];
+                die($file);
+                $destination = '../assets/images';
+                move_uploaded_file($file, realpath(dirname(__FILE__)).$destination.'/'.$img['name']);
                 $this->redirect('index.php');
                 return;
             } catch (Exception $exception) { echo 'Error: '. $exception->getMessage(); }
