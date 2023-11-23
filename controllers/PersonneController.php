@@ -1,6 +1,5 @@
 <?php
-require_once 'models/connexion.php';
-require_once 'models/PersonneModel.php';
+require 'autoload.php';
 
 class PersonneController{
     protected $personne = NULL;
