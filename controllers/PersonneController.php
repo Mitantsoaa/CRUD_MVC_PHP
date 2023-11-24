@@ -26,6 +26,8 @@ class PersonneController{
                 $this->editPerson($id);
             }elseif ( $op == 'delete' && $id != NULL) {
                 $this->deletePerson($id);
+            }elseif ( $op == 'view' && $id != NULL) {
+                $this->deletePerson($id);
             }else {
                 $this->showError("Page not found", "Page for operation ".$op." was not found!");
             }
@@ -114,5 +116,18 @@ class PersonneController{
             echo 'Error: ' . $exception->getMessage();
         }
         $this->redirect('index.php');
+    }
+
+    public function getPersonneById($id)
+    {
+        try {
+            $pers = $this->personne->getPersonById($id);
+            $img = $pers['img_url'];
+            $nom = $pers['nom'];
+            $mail = $pers['email'];
+            $phone = $pers['phone'];
+        } catch (Exception $exception) {
+            echo 'Error: ' . $exception->getMessage();
+        }
     }
 }
