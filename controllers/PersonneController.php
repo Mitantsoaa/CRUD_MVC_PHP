@@ -67,17 +67,17 @@ class PersonneController{
             try {
                 $this->personne->newPerson($img, $nom, $mail, $phone);
                 $file = $_FILES['photo']['tmp_name'];
-                $destination = '../assets/images';
-                move_uploaded_file($file, realpath(dirname(__FILE__)).$destination.'/'.$img['name']);
+                $destination = '/assets/images';
+                move_uploaded_file($file, realpath(dirname(__DIR__)).$destination.'/'.$img);
                 $this->redirect('index.php');
-                
+
                 return;
             } catch (Exception $exception) { echo 'Error: '. $exception->getMessage(); }
         }
         include 'views/insert.php';
     }
 
-    public function editPerson($id) 
+    public function editPerson($id)
     {
         $item = $this->personne->getPersonById($id);
         $img = $item['img_url'];
@@ -94,6 +94,9 @@ class PersonneController{
             try {
 
                 $this->personne->updatePerson($id, $photo, $name, $email, $tel);
+                $file = $_FILES['photo']['tmp_name'];
+                $destination = '/assets/images';
+                move_uploaded_file($file, realpath(dirname(__DIR__)).$destination.'/'.$photo);
                 $this->redirect('index.php');
 
                 return;
