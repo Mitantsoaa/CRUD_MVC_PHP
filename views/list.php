@@ -16,7 +16,7 @@
             <tbody>
                 <?php foreach ($personnes as $personne) : ?>
                     <tr>
-                        <td><?php print htmlentities($personne['img_url'], ENT_QUOTES); ?></td>
+                        <td><img src="../assets/images/<?php print htmlentities($personne['img_url'], ENT_QUOTES); ?>"></td>
                         <td><?php print htmlentities($personne['nom'], ENT_QUOTES); ?></td>
                         <td><?php print htmlentities($personne['email']); ?></td>
                         <td><?php print htmlentities($personne['phone']); ?></td>
