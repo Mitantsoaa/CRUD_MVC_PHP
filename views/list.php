@@ -20,7 +20,13 @@
                         <td><?php print htmlentities($personne['nom'], ENT_QUOTES); ?></td>
                         <td><?php print htmlentities($personne['email']); ?></td>
                         <td><?php print htmlentities($personne['phone']); ?></td>
-                        <td><?php echo "<a href='index.php?op=edit&id=" . $personne['id'] . "'class='btn btn-warning btn-sm' role='button'>" ?>edit</a>&nbsp;<a href="index.php?op=delete&id=<?php echo $personne['id']; ?>" class="btn btn-primary btn-sm" role="button">Delete</a></td>
+                        <td>
+                            <?php echo "<a href='index.php?op=edit&id=" . $personne['id'] . "'class='btn btn-warning btn-sm' role='button'>" ?>edit</a>
+                            <a href="index.php?op=delete&id=<?php echo $personne['id']; ?>" class="btn btn-primary btn-sm" role="button">Delete</a>
+                            <a href="index.php?op=view&id=<?php echo $personne['id'];?>" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            View
+                            </a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -45,5 +51,28 @@
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <?php 
+var_dump($phone);
 //</body> </html>
