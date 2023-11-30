@@ -129,5 +129,6 @@ class PersonneController{
         } catch (Exception $exception) {
             echo 'Error: ' . $exception->getMessage();
         }
+        $this->redirect('details.php');
     }
 }
