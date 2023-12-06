@@ -3,7 +3,7 @@
 spl_autoload_register(function($class){
     $paths = array(
         join(DIRECTORY_SEPARATOR, [__DIR__]),
-        join(DIRECTORY_SEPARATOR, [__DIR__].'/models'),
+        join(DIRECTORY_SEPARATOR, [__DIR__.'/models']),
 
     );
 

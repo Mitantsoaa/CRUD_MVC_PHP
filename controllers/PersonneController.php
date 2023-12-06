@@ -27,7 +27,7 @@ class PersonneController{
             }elseif ( $op == 'delete' && $id != NULL) {
                 $this->deletePerson($id);
             }elseif ( $op == 'view' && $id != NULL) {
-                $this->deletePerson($id);
+                $this->getPersonneById($id);
             }else {
                 $this->showError("Page not found", "Page for operation ".$op." was not found!");
             }
@@ -126,9 +126,13 @@ class PersonneController{
             $nom = $pers['nom'];
             $mail = $pers['email'];
             $phone = $pers['phone'];
+            $this->redirect('Views/details.php');
+
+            return ;
+
         } catch (Exception $exception) {
             echo 'Error: ' . $exception->getMessage();
         }
-        $this->redirect('details.php');
+        
     }
 }
