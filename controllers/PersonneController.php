@@ -126,13 +126,13 @@ class PersonneController{
             $nom = $pers['nom'];
             $mail = $pers['email'];
             $phone = $pers['phone'];
-            $this->redirect('Views/details.php');
-
-            return ;
 
         } catch (Exception $exception) {
             echo 'Error: ' . $exception->getMessage();
         }
-        
+
+        $this->redirect('Views/details.php');
+
+        return;
     }
 }
