@@ -120,19 +120,15 @@ class PersonneController{
 
     public function getPersonneById($id)
     {
-        try {
-            $pers = $this->personne->getPersonById($id);
-            $img = $pers['img_url'];
-            $nom = $pers['nom'];
-            $mail = $pers['email'];
-            $phone = $pers['phone'];
+        $pers = $this->personne->getPersonById($id);
+        $img = $pers['img_url'];
+        $nom = $pers['nom'];
+        $mail = $pers['email'];
+        $phone = $pers['phone'];
 
-        } catch (Exception $exception) {
-            echo 'Error: ' . $exception->getMessage();
-        }
+        return;
 
         $this->redirect('Views/details.php');
 
-        return;
     }
 }
